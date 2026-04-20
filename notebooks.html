@@ -1,0 +1,2450 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Systems of linear equations &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Markdown Files" href="markdown.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/MyPP.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/MyPP.jpeg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Daffa Shidqy Pranzah
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>1. Systems of linear equations</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/notebooks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Systems of linear equations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>1. Systems of linear equations</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-persamaan-linear"><strong>1.2Sistem Persamaan Linear</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-persamaan-linear">Definisi (Persamaan Linear)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-sistem-persamaan-linear"><strong>1.3Definisi Sistem persamaan linear</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi-sistem-persamaan-linear"><strong>1.4Solusi sistem persamaan linear</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi-persamaan-linear">Solusi persamaan linear</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solusi sistem persamaan linear</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-himpunan-solusi">Jenis-Jenis Himpunan Solusi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-1-5-solusi-sistem-elementer"><strong>Contoh 1.5 Solusi sistem elementer</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-1">Sistem 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-2">Sistem 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-3">Sistem 3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi">Solusi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-1-tidak-ada-solusi-inkonsisten">Sistem 1: <strong>Tidak Ada Solusi (Inkonsisten)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-2-solusi-unik">Sistem 2: <strong>Solusi Unik</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-3-tak-hingga-banyak-solusi">Sistem 3: <strong>Tak Hingga Banyak Solusi</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-geometris">Interpretasi Geometris</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-yang-menngunakan-3-variabel-dengan-kondisi-unik"><strong>Contoh Yang menngunakan 3 variabel dengan kondisi unik</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminasi-gauss-gaussian-elimination"><strong>2.1 Eliminasi Gauss (Gaussian Elimination)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-eselon-baris"><strong>2.2 Matriks eselon baris</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-2-2-1-matriks-teraugmentasi">Definisi 2.2.1. Matriks teraugmentasi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poin-penting">Poin Penting:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-2-3-eliminasi-gauss"><strong>Definisi 2.3 Eliminasi Gauss</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-algoritma">Langkah-langkah Algoritma:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-model">Contoh Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-awal">Matriks Awal:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-tukar-r-1-leftrightarrow-r-2">Langkah 1: Tukar <span class="math notranslate nohighlight">\(R_1 \leftrightarrow R_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-skala-r-1-dengan-frac-1-2">Langkah 2: Skala <span class="math notranslate nohighlight">\(R_1\)</span> dengan <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-eliminasi-di-bawah-leading-one-kolom-1">Langkah 3: Eliminasi di bawah leading one kolom 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-7-lanjutkan-proses">Langkah 4-7: Lanjutkan proses…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-bentuk-eselon-baris">Hasil Akhir - Bentuk Eselon Baris:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Poin Penting:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sistem-3-variabel">A. Sistem 3 Variabel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-persamaan">Sistem Persamaan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-eliminasi-kolom-pertama-baris-2">LANGKAH 1: Eliminasi kolom pertama (baris 2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eliminasi-kolom-pertama-baris-3">LANGKAH 2: Eliminasi kolom pertama (baris 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-eliminasi-kolom-kedua-baris-3">LANGKAH 3: Eliminasi kolom kedua (baris 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-rescaling-baris-3">LANGKAH 4: Rescaling baris 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-substitusi-mundur-eliminasi-kolom-ketiga">LANGKAH 5: Substitusi Mundur - Eliminasi kolom ketiga</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-substitusi-mundur-eliminasi-kolom-kedua">LANGKAH 6: Substitusi Mundur - Eliminasi kolom kedua</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Matriks Awal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Matriks Awal</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>sympy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\pansogan\appdata\local\programs\python\python313\lib\site-packages (2.4.2)
+Requirement already satisfied: sympy in c:\users\pansogan\appdata\local\programs\python\python313\lib\site-packages (1.14.0)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in c:\users\pansogan\appdata\local\programs\python\python313\lib\site-packages (from sympy) (1.3.0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\pansogan\AppData\Local\Programs\Python\Python313\python.exe
+</pre></div>
+</div>
+</div>
+</div>
+<section id="systems-of-linear-equations">
+<h1><strong>1. Systems of linear equations</strong><a class="headerlink" href="#systems-of-linear-equations" title="Link to this heading">#</a></h1>
+<p>Menghitung dan mempelajari solusi dari persamaan, serta sistem persamaan, tanpa diragukan lagi memainkan peran penting dalam matematika; meskipun perlu segera kami tambahkan bahwa itu bukanlah satu-satunya hal yang dilakukan oleh para matematikawan! Dalam bab ini kita akan mengembangkan suatu teori yang pada dasarnya lengkap mengenai keluarga persamaan matematika yang cukup sederhana: yaitu, persamaan linear. Hal ini akan menjadi pengantar yang agak tidak langsung menuju studi kita tentang aljabar linear, karena di balik deskripsi parametrik dari solusi sistem linear tersembunyi konsep-konsep ruang vektor seperti subruang, bentangan (span), dan kebebasan linear. Selain itu, kita juga akan mempelajari salah satu alat komputasi terpenting dalam aljabar linear: eliminasi Gauss (Gaussian elimination).</p>
+</section>
+<section id="sistem-persamaan-linear">
+<h1><strong>1.2Sistem Persamaan Linear</strong><a class="headerlink" href="#sistem-persamaan-linear" title="Link to this heading">#</a></h1>
+<section id="definisi-persamaan-linear">
+<h2>Definisi (Persamaan Linear)<a class="headerlink" href="#definisi-persamaan-linear" title="Link to this heading">#</a></h2>
+<p>Suatu <strong>ekspresi linear</strong> dalam <span class="math notranslate nohighlight">\(n\)</span> peubah (atau variabel) <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span> adalah ekspresi yang berbentuk</p>
+<div class="math notranslate nohighlight">
+\[
+a_1 x_1 + a_2 x_2 + \cdots + a_n x_n,
+\]</div>
+<p>dengan <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_n\)</span> adalah bilangan real tetap (konstanta).</p>
+<hr class="docutils" />
+<p>Suatu <strong>persamaan linear</strong> dalam peubah <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span> adalah persamaan yang dapat disederhanakan (hanya menggunakan operasi penjumlahan dan pengurangan) ke bentuk</p>
+<div class="math notranslate nohighlight">
+\[
+a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = b
+\tag{1.1.1}
+\]</div>
+<p>Bentuk ini disebut sebagai <strong>bentuk standar</strong>.</p>
+<hr class="docutils" />
+<p>Suatu persamaan dalam peubah <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span> disebut <strong>nonlinear</strong> apabila tidak dapat disederhanakan ke bentuk (1.1.1) hanya dengan menggunakan penjumlahan dan pengurangan.</p>
+<hr class="docutils" />
+<p>Diberikan persamaan linear dalam bentuk standar (1.1.1):</p>
+<ul class="simple">
+<li><p>Persamaan disebut <strong>homogen</strong> jika <span class="math notranslate nohighlight">\(b = 0\)</span>.</p></li>
+<li><p>Persamaan disebut <strong>nonhomogen</strong> jika <span class="math notranslate nohighlight">\(b \ne 0\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="definisi-sistem-persamaan-linear">
+<h1><strong>1.3Definisi Sistem persamaan linear</strong><a class="headerlink" href="#definisi-sistem-persamaan-linear" title="Link to this heading">#</a></h1>
+<p><strong>Sistem persamaan linear</strong> (atau <strong>sistem linear</strong>) adalah himpunan persamaan linear.</p>
+<p>Sistem linear <strong>homogen</strong> adalah himpunan persamaan linear homogen.</p>
+<p>Ketika menampilkan sistem <span class="math notranslate nohighlight">\(m\)</span> persamaan dalam <span class="math notranslate nohighlight">\(n\)</span> variabel tak diketahui <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span>, kita biasanya menulis setiap persamaan dalam bentuk standar dan menyelaraskan suku-suku yang bersesuaian dari setiap persamaan ke dalam kolom:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a_{11}x_1 &amp; \quad + \quad a_{12}x_2 &amp; \quad + \cdots + \quad a_{1n}x_n &amp; \quad = \quad b_1 \\
+a_{21}x_1 &amp; \quad + \quad a_{22}x_2 &amp; \quad + \cdots + \quad a_{2n}x_n &amp; \quad = \quad b_2 \\
+&amp; \quad \vdots &amp; \quad \vdots &amp; \quad \vdots \\
+a_{m1}x_1 &amp; \quad + \quad a_{m2}x_2 &amp; \quad + \cdots + \quad a_{mn}x_n &amp; \quad = \quad b_m
+\end{aligned}
+\end{split}\]</div>
+<p>Sebuah sistem homogen dengan demikian biasanya ditulis sebagai:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a_{11}x_1 &amp; \quad + \quad a_{12}x_2 &amp; \quad + \cdots + \quad a_{1n}x_n &amp; \quad = \quad 0 \\
+a_{21}x_1 &amp; \quad + \quad a_{22}x_2 &amp; \quad + \cdots + \quad a_{2n}x_n &amp; \quad = \quad 0 \\
+&amp; \quad \vdots &amp; \quad \vdots &amp; \quad \vdots \\
+a_{m1}x_1 &amp; \quad + \quad a_{m2}x_2 &amp; \quad + \cdots + \quad a_{mn}x_n &amp; \quad = \quad 0
+\end{aligned}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SistemPersamaanLinear</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">tampilkan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sistem Persamaan Linear&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">):</span>
+            <span class="n">persamaan</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">koef</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">koef</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">koef</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">persamaan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x</span><span class="si">{</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">koef</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                        <span class="n">persamaan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-x</span><span class="si">{</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">persamaan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">koef</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">kiri</span> <span class="o">=</span> <span class="s2">&quot; + &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">persamaan</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;+ -&quot;</span><span class="p">,</span> <span class="s2">&quot;- &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kiri</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Informasi Sistem&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah persamaan :&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah variabel  :&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rank matriks     :&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
+            <span class="n">det</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Determinan       :&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">det</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kesimpulan       : Solusi unik&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kesimpulan       : Tidak unik&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">x</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="c1"># ==============================</span>
+<span class="c1"># CONTOH PROGRAM</span>
+<span class="c1"># ==============================</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PROGRAM SISTEM PERSAMAAN LINEAR&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">sistem</span> <span class="o">=</span> <span class="n">SistemPersamaanLinear</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">sistem</span><span class="o">.</span><span class="n">tampilkan</span><span class="p">()</span>
+<span class="n">sistem</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="n">solusi</span> <span class="o">=</span> <span class="n">sistem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Solusi:&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">solusi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">nilai</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">solusi</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">nilai</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sistem tidak memiliki solusi unik&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+PROGRAM SISTEM PERSAMAAN LINEAR
+==================================================
+
+Sistem Persamaan Linear
+----------------------------------------
+2.0x1 + x2 - x3 = 8.0
+-3.0x1 - x2 + 2.0x3 = -11.0
+-2.0x1 + x2 + 2.0x3 = -3.0
+----------------------------------------
+
+Informasi Sistem
+----------------------------------------
+Jumlah persamaan : 3
+Jumlah variabel  : 3
+Rank matriks     : 3
+Determinan       : -1.0
+Kesimpulan       : Solusi unik
+----------------------------------------
+
+Solusi:
+x1 = 2.0
+x2 = 3.0
+x3 = -1.0
+==================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solusi-sistem-persamaan-linear">
+<h1><strong>1.4Solusi sistem persamaan linear</strong><a class="headerlink" href="#solusi-sistem-persamaan-linear" title="Link to this heading">#</a></h1>
+</section>
+<section id="solusi-persamaan-linear">
+<h1>Solusi persamaan linear<a class="headerlink" href="#solusi-persamaan-linear" title="Link to this heading">#</a></h1>
+<p><strong>Solusi persamaan linear</strong></p>
+<div class="math notranslate nohighlight">
+\[a_1x_1 + a_2x_2 + \cdots + a_nx_n = b\]</div>
+<p>adalah <span class="math notranslate nohighlight">\(n\)</span>-tupel <span class="math notranslate nohighlight">\((s_1, s_2, \ldots, s_n)\)</span> bilangan real yang membuat penugasan variabel <span class="math notranslate nohighlight">\(x_1 = s_1, x_2 = s_2, \ldots, x_n = s_n\)</span> memenuhi persamaan. Kita katakan <span class="math notranslate nohighlight">\((s_1, \ldots, s_n)\)</span> <strong>menyelesaikan persamaan</strong> dalam kasus ini.</p>
+</section>
+<section id="id1">
+<h1>Solusi sistem persamaan linear<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p><strong>Solusi sistem persamaan linear</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a_{11}x_1 &amp; \quad + \quad a_{12}x_2 &amp; \quad + \cdots + \quad a_{1n}x_n &amp; \quad = \quad b_1 \\
+a_{21}x_1 &amp; \quad + \quad a_{22}x_2 &amp; \quad + \cdots + \quad a_{2n}x_n &amp; \quad = \quad b_2 \\
+&amp; \quad \vdots &amp; \quad \vdots &amp; \quad \vdots \\
+a_{m1}x_1 &amp; \quad + \quad a_{m2}x_2 &amp; \quad + \cdots + \quad a_{mn}x_n &amp; \quad = \quad b_m
+\end{aligned}
+\end{split}\]</div>
+<p>adalah <span class="math notranslate nohighlight">\(n\)</span>-tupel <span class="math notranslate nohighlight">\((s_1, s_2, \ldots, s_n)\)</span> yang merupakan solusi untuk setiap <span class="math notranslate nohighlight">\(m\)</span> persamaan dalam sistem. Kita katakan <span class="math notranslate nohighlight">\((s_1, s_2, \ldots, s_n)\)</span> <strong>menyelesaikan sistem</strong> dalam kasus ini.</p>
+</section>
+<section id="jenis-jenis-himpunan-solusi">
+<h1>Jenis-Jenis Himpunan Solusi<a class="headerlink" href="#jenis-jenis-himpunan-solusi" title="Link to this heading">#</a></h1>
+<p>Diberikan sistem linear, kita mencari himpunan <strong>semua</strong> solusi sistem. Himpunan solusi ini akan memiliki salah satu dari tiga bentuk kualitatif:</p>
+<ol class="arabic simple">
+<li><p><strong>Himpunan solusi kosong</strong> (tidak ada solusi). Kita katakan sistem <strong>inkonsisten</strong>. Jika tidak, sistem disebut <strong>konsisten</strong>.</p></li>
+<li><p><strong>Himpunan solusi mengandung satu elemen</strong> (tepat satu solusi).</p></li>
+<li><p><strong>Himpunan solusi mengandung tak hingga banyak elemen</strong> (tak hingga banyak solusi).</p></li>
+</ol>
+</section>
+<section id="contoh-1-5-solusi-sistem-elementer">
+<h1><strong>Contoh 1.5 Solusi sistem elementer</strong><a class="headerlink" href="#contoh-1-5-solusi-sistem-elementer" title="Link to this heading">#</a></h1>
+<p>Untuk setiap sistem, hitung himpunan solusinya.</p>
+</section>
+<section id="sistem-1">
+<h1>Sistem 1<a class="headerlink" href="#sistem-1" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x - y &amp;= 0 \\
+x - y &amp;= 1
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="sistem-2">
+<h1>Sistem 2<a class="headerlink" href="#sistem-2" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x - y &amp;= 0 \\
+x + y &amp;= 1
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="sistem-3">
+<h1>Sistem 3<a class="headerlink" href="#sistem-3" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x - y &amp;= 1 \\
+2x - 2y &amp;= 2
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="solusi">
+<h1>Solusi<a class="headerlink" href="#solusi" title="Link to this heading">#</a></h1>
+<section id="sistem-1-tidak-ada-solusi-inkonsisten">
+<h2>Sistem 1: <strong>Tidak Ada Solusi (Inkonsisten)</strong><a class="headerlink" href="#sistem-1-tidak-ada-solusi-inkonsisten" title="Link to this heading">#</a></h2>
+<p>Persamaan <span class="math notranslate nohighlight">\(x - y = 0\)</span> dan <span class="math notranslate nohighlight">\(x - y = 1\)</span> bertentangan. Ekspresi yang sama tidak bisa sama dengan 0 dan 1 secara bersamaan.</p>
+<ul class="simple">
+<li><p><strong>Himpunan solusi:</strong> <span class="math notranslate nohighlight">\(\emptyset\)</span> (himpunan kosong)</p></li>
+<li><p><strong>Klasifikasi:</strong> Sistem inkonsisten</p></li>
+</ul>
+</section>
+<section id="sistem-2-solusi-unik">
+<h2>Sistem 2: <strong>Solusi Unik</strong><a class="headerlink" href="#sistem-2-solusi-unik" title="Link to this heading">#</a></h2>
+<p>Menjumlahkan persamaan:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((x - y) + (x + y) = 0 + 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(2x = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x = \frac{1}{2}\)</span></p></li>
+</ul>
+<p>Substitusi kembali:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{1}{2} - y = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = \frac{1}{2}\)</span></p></li>
+<li><p><strong>Himpunan solusi:</strong> <span class="math notranslate nohighlight">\(\left\{\left(\frac{1}{2}, \frac{1}{2}\right)\right\}\)</span></p></li>
+<li><p><strong>Klasifikasi:</strong> Konsisten dengan solusi unik</p></li>
+</ul>
+</section>
+<section id="sistem-3-tak-hingga-banyak-solusi">
+<h2>Sistem 3: <strong>Tak Hingga Banyak Solusi</strong><a class="headerlink" href="#sistem-3-tak-hingga-banyak-solusi" title="Link to this heading">#</a></h2>
+<p>Persamaan kedua adalah 2 kali persamaan pertama:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2x - 2y = 2\)</span> ekuivalen dengan <span class="math notranslate nohighlight">\(x - y = 1\)</span></p></li>
+</ul>
+<p>Misalkan <span class="math notranslate nohighlight">\(y = t\)</span> (parameter bebas), maka:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x = 1 + t\)</span></p></li>
+<li><p><strong>Himpunan solusi:</strong> <span class="math notranslate nohighlight">\(\{(1+t, t) : t \in \mathbb{R}\}\)</span></p></li>
+<li><p><strong>Klasifikasi:</strong> Konsisten dengan tak hingga banyak solusi</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="interpretasi-geometris">
+<h1>Interpretasi Geometris<a class="headerlink" href="#interpretasi-geometris" title="Link to this heading">#</a></h1>
+<p>Persamaan linear (nontrivial) dalam dua variabel tak diketahui mendefinisikan sebuah <strong>garis di <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span></strong>, dan persamaan (nontrivial) dalam tiga variabel tak diketahui mendefinisikan sebuah <strong>bidang di <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span></strong>.</p>
+<p>Observasi ini memungkinkan kita membawa intuisi geometris yang kuat untuk analisis sistem persamaan linear dalam dua atau tiga variabel tak diketahui.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EXAMPLE 1.1.6 - PERHITUNGAN SOLUSI&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># ===== SYSTEM 1: x - y = 0, x - y = 1 =====</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[SYSTEM 1]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  x - y = 0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  x - y = 1&quot;</span><span class="p">)</span>
+
+<span class="n">A1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">rank_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+<span class="n">rank_Ab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">]))</span>
+
+<span class="k">if</span> <span class="n">rank_A</span> <span class="o">!=</span> <span class="n">rank_Ab</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Hasil: TIDAK ADA SOLUSI (inkonsisten)&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">solusi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Solusi: x = </span><span class="si">{</span><span class="n">solusi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, y = </span><span class="si">{</span><span class="n">solusi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ===== SYSTEM 2: x - y = 0, x + y = 1 =====</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[SYSTEM 2]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  x - y = 0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  x + y = 1&quot;</span><span class="p">)</span>
+
+<span class="n">A2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">solusi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Hasil: SOLUSI UNIK&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → x = </span><span class="si">{</span><span class="n">solusi2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (= 1/2)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → y = </span><span class="si">{</span><span class="n">solusi2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (= 1/2)&quot;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  → Tidak dapat diselesaikan&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ===== SYSTEM 3: x - y = 1, 2x - 2y = 2 =====</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[SYSTEM 3]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  x - y = 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  2x - 2y = 2&quot;</span><span class="p">)</span>
+
+<span class="n">A3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">b3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">rank_A3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
+<span class="n">rank_Ab3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">]))</span>
+
+<span class="k">if</span> <span class="n">rank_A3</span> <span class="o">==</span> <span class="n">rank_Ab3</span> <span class="ow">and</span> <span class="n">rank_A3</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Hasil: TAK HINGGA SOLUSI&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Bentuk umum: x = 1 + t, y = t (t ∈ ℝ)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Contoh solusi:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;     t = </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">: x = </span><span class="si">{</span><span class="mi">1</span><span class="o">+</span><span class="n">t</span><span class="si">}</span><span class="s2">, y = </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  → Sistem inkonsisten&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ===== RINGKASAN =====</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RINGKASAN:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  System 1: Tidak ada solusi&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  System 2: Solusi unik → (1/2, 1/2)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  System 3: Tak hingga solusi → (1+t, t)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+EXAMPLE 1.1.6 - PERHITUNGAN SOLUSI
+==================================================
+
+[SYSTEM 1]
+  x - y = 0
+  x - y = 1
+  → Hasil: TIDAK ADA SOLUSI (inkonsisten)
+
+[SYSTEM 2]
+  x - y = 0
+  x + y = 1
+  → Hasil: SOLUSI UNIK
+  → x = 0.5000 (= 1/2)
+  → y = 0.5000 (= 1/2)
+
+[SYSTEM 3]
+  x - y = 1
+  2x - 2y = 2
+  → Hasil: TAK HINGGA SOLUSI
+  → Bentuk umum: x = 1 + t, y = t (t ∈ ℝ)
+  → Contoh solusi:
+     t = -1: x = 0, y = -1
+     t = 0: x = 1, y = 0
+     t = 1: x = 2, y = 1
+
+==================================================
+RINGKASAN:
+  System 1: Tidak ada solusi
+  System 2: Solusi unik → (1/2, 1/2)
+  System 3: Tak hingga solusi → (1+t, t)
+==================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Geogebra Sytem 1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;geogebraT2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6e0167a19624448cdad2b2a9cc93caa34d6cb82a60ac83ab36079bca264bf945.png" src="_images/6e0167a19624448cdad2b2a9cc93caa34d6cb82a60ac83ab36079bca264bf945.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Geogebra Sytem 2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;geogebraT3.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/25c190c9d4cbf91236d6614a5f8a83c70d251d3f4f82e16b5814eab979113467.png" src="_images/25c190c9d4cbf91236d6614a5f8a83c70d251d3f4f82e16b5814eab979113467.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Geogebra Sytem 3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;geogebraT4.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cbc3488ac9902f4d666728eeea2b6629867f7be8000ab7fb895a608bb429f6fb.png" src="_images/cbc3488ac9902f4d666728eeea2b6629867f7be8000ab7fb895a608bb429f6fb.png" />
+</div>
+</div>
+<section id="contoh-yang-menngunakan-3-variabel-dengan-kondisi-unik">
+<h2><strong>Contoh Yang menngunakan 3 variabel dengan kondisi unik</strong><a class="headerlink" href="#contoh-yang-menngunakan-3-variabel-dengan-kondisi-unik" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SISTEM 3 VARIABEL - SOLUSI UNIK&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Sistem persamaan:</span>
+<span class="c1"># x + y + z = 6</span>
+<span class="c1"># 2x - y + z = 3</span>
+<span class="c1"># x + 2y - z = 2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sistem Persamaan:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  x + y + z = 6&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  2x - y + z = 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  x + 2y - z = 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># Matriks koefisien dan konstanta</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Hitung determinan</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Determinan matriks A: </span><span class="si">{</span><span class="n">det</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Determinan ≠ 0 → Solusi unik ada!&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Selesaikan sistem</span>
+    <span class="n">solusi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HASIL:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  x = </span><span class="si">{</span><span class="n">solusi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  y = </span><span class="si">{</span><span class="n">solusi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  z = </span><span class="si">{</span><span class="n">solusi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Verifikasi</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VERIFIKASI:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">solusi</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Persamaan 1: </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">z</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="n">z</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> (harus 6)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Persamaan 2: 2(</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">) - </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">z</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="o">+</span><span class="n">z</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> (harus 3)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Persamaan 3: </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> + 2(</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">) - </span><span class="si">{</span><span class="n">z</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">-</span><span class="n">z</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> (harus 2)&quot;</span><span class="p">)</span>
+    
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✗ Determinan = 0 → Tidak ada solusi unik&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+SISTEM 3 VARIABEL - SOLUSI UNIK
+==================================================
+
+Sistem Persamaan:
+  x + y + z = 6
+  2x - y + z = 3
+  x + 2y - z = 2
+
+Determinan matriks A: 7.0000
+✓ Determinan ≠ 0 → Solusi unik ada!
+
+==================================================
+HASIL:
+==================================================
+  x = 1.0000
+  y = 2.0000
+  z = 3.0000
+
+==================================================
+VERIFIKASI:
+==================================================
+  Persamaan 1: 1 + 2 + 3 = 6 (harus 6)
+  Persamaan 2: 2(1) - 2 + 3 = 3 (harus 3)
+  Persamaan 3: 1 + 2(2) - 3 = 2 (harus 2)
+
+==================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Geogebra</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;geogebraT5.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/33d4cbd9b0856b70798398aa2e2556c5af6e016ac83b74235e6daa94bef0c0ed.png" src="_images/33d4cbd9b0856b70798398aa2e2556c5af6e016ac83b74235e6daa94bef0c0ed.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="eliminasi-gauss-gaussian-elimination">
+<h1><strong>2.1 Eliminasi Gauss (Gaussian Elimination)</strong><a class="headerlink" href="#eliminasi-gauss-gaussian-elimination" title="Link to this heading">#</a></h1>
+<p>Pada Bagian 1.1 kita telah menguraikan sebuah prosedur untuk menyelesaikan suatu <strong>sistem persamaan linear</strong>.<br />
+Prosedur tersebut melibatkan penerapan serangkaian <strong>operasi baris elementer</strong> pada sistem tersebut untuk memperoleh sistem yang lebih <em>sederhana</em>.</p>
+<p>Pada dua bagian berikutnya, kita akan melengkapi uraian tersebut. Secara khusus, kita akan:</p>
+<ol class="arabic simple">
+<li><p>Menjelaskan secara tepat apa yang dimaksud dengan sistem yang “lebih sederhana”.</p></li>
+<li><p>Memberikan sebuah algoritma (atau langkah-langkah sistematis) yang menentukan urutan operasi baris apa saja yang harus diterapkan untuk memperoleh sistem yang lebih sederhana tersebut.</p></li>
+<li><p>Menjelaskan bagaimana cara menemukan semua solusi dari sistem sederhana yang dihasilkan.</p></li>
+</ol>
+</section>
+<section id="matriks-eselon-baris">
+<h1><strong>2.2 Matriks eselon baris</strong><a class="headerlink" href="#matriks-eselon-baris" title="Link to this heading">#</a></h1>
+<p>Langkah pertama kita dalam arah ini adalah memperkenalkan kemudahan notasi. Seperti yang mungkin Anda perhatikan, ketika melakukan operasi baris pada sistem persamaan, kita pada dasarnya memperlakukan variabel tak diketahui, serta simbol plus dan sama dengan, sebagai placeholder; satu-satunya hal yang benar-benar berubah dalam langkah tertentu adalah koefisien dalam persamaan. <strong>Matriks teraugmentasi</strong> yang terkait dengan sistem linear adalah cara formal untuk mengekstrak hanya informasi koefisien dari sistem linear.</p>
+</section>
+<section id="definisi-2-2-1-matriks-teraugmentasi">
+<h1>Definisi 2.2.1. Matriks teraugmentasi<a class="headerlink" href="#definisi-2-2-1-matriks-teraugmentasi" title="Link to this heading">#</a></h1>
+<p>Misalkan <span class="math notranslate nohighlight">\(L\)</span> adalah sistem linear:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a_{11}x_1 &amp; \quad + \quad a_{12}x_2 &amp; \quad + \cdots + \quad a_{1n}x_n &amp; \quad = \quad b_1 \\
+a_{21}x_1 &amp; \quad + \quad a_{22}x_2 &amp; \quad + \cdots + \quad a_{2n}x_n &amp; \quad = \quad b_2 \\
+&amp; \quad \vdots &amp; \quad \vdots &amp; \quad \vdots \\
+a_{m1}x_1 &amp; \quad + \quad a_{m2}x_2 &amp; \quad + \cdots + \quad a_{mn}x_n &amp; \quad = \quad b_m
+\end{aligned}
+\end{split}\]</div>
+<p><strong>Matriks teraugmentasi yang terkait dengan <span class="math notranslate nohighlight">\(L\)</span></strong> adalah matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{cccc|c}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; b_1 \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; b_2 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} &amp; b_m
+\end{array}
+\right]
+\end{split}\]</div>
+<section id="poin-penting">
+<h2>Poin Penting:<a class="headerlink" href="#poin-penting" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Garis vertikal memisahkan koefisien dari konstanta</p></li>
+<li><p>Sisi kiri: matriks koefisien <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p>Sisi kanan: vektor konstanta <span class="math notranslate nohighlight">\(b\)</span></p></li>
+<li><p>Notasi: <span class="math notranslate nohighlight">\([A | b]\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="definisi-2-3-eliminasi-gauss">
+<h1><strong>Definisi 2.3 Eliminasi Gauss</strong><a class="headerlink" href="#definisi-2-3-eliminasi-gauss" title="Link to this heading">#</a></h1>
+<p><strong>Eliminasi Gauss</strong> adalah algoritma yang dijelaskan di bawah ini. Algoritma ini mengambil matriks <span class="math notranslate nohighlight">\(A\)</span> sebagai input dan mengembalikan matriks <span class="math notranslate nohighlight">\(B\)</span> yang ekuivalen baris dalam bentuk eselon baris.</p>
+</section>
+<section id="langkah-langkah-algoritma">
+<h1>Langkah-langkah Algoritma:<a class="headerlink" href="#langkah-langkah-algoritma" title="Link to this heading">#</a></h1>
+<p><strong>Langkah 1:</strong> Temukan kolom tak nol paling kiri dan lakukan pertukaran baris untuk memindahkan baris dengan entri tak nol ini ke bagian atas matriks.</p>
+<p><strong>Langkah 2:</strong> Skala baris teratas baru untuk menghasilkan angka satu utama (leading one) di baris tersebut. Sebut baris baru ini <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<p><strong>Langkah 3:</strong> Untuk setiap baris <span class="math notranslate nohighlight">\(r_i\)</span> di bawah <span class="math notranslate nohighlight">\(r\)</span>, lakukan operasi baris berbentuk <span class="math notranslate nohighlight">\(r_i + c \cdot r\)</span> untuk mengganti semua entri di bawah leading one dari <span class="math notranslate nohighlight">\(r\)</span> dengan nol.</p>
+<p><strong>Langkah 4:</strong> Mulai lagi dengan Langkah 1 yang diterapkan pada matriks yang terdiri dari semua baris di bawah <span class="math notranslate nohighlight">\(r\)</span>. Lanjutkan sampai matriks berada dalam bentuk eselon baris.</p>
+<hr class="docutils" />
+</section>
+<section id="contoh-model">
+<h1>Contoh Model<a class="headerlink" href="#contoh-model" title="Link to this heading">#</a></h1>
+<section id="matriks-awal">
+<h2>Matriks Awal:<a class="headerlink" href="#matriks-awal" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+0 &amp; 0 &amp; -2 &amp; 0 &amp; 7 &amp; 12 \\
+2 &amp; 4 &amp; -10 &amp; 6 &amp; 12 &amp; 28 \\
+2 &amp; 4 &amp; -5 &amp; 6 &amp; -5 &amp; -1
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-1-tukar-r-1-leftrightarrow-r-2">
+<h2>Langkah 1: Tukar <span class="math notranslate nohighlight">\(R_1 \leftrightarrow R_2\)</span><a class="headerlink" href="#langkah-1-tukar-r-1-leftrightarrow-r-2" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\xrightarrow{R_1 \leftrightarrow R_2}
+\begin{bmatrix}
+2 &amp; 4 &amp; -10 &amp; 6 &amp; 12 &amp; 28 \\
+0 &amp; 0 &amp; -2 &amp; 0 &amp; 7 &amp; 12 \\
+2 &amp; 4 &amp; -5 &amp; 6 &amp; -5 &amp; -1
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-2-skala-r-1-dengan-frac-1-2">
+<h2>Langkah 2: Skala <span class="math notranslate nohighlight">\(R_1\)</span> dengan <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span><a class="headerlink" href="#langkah-2-skala-r-1-dengan-frac-1-2" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\xrightarrow{\frac{1}{2}R_1}
+\begin{bmatrix}
+1 &amp; 2 &amp; -5 &amp; 3 &amp; 6 &amp; 14 \\
+0 &amp; 0 &amp; -2 &amp; 0 &amp; 7 &amp; 12 \\
+2 &amp; 4 &amp; -5 &amp; 6 &amp; -5 &amp; -1
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-3-eliminasi-di-bawah-leading-one-kolom-1">
+<h2>Langkah 3: Eliminasi di bawah leading one kolom 1<a class="headerlink" href="#langkah-3-eliminasi-di-bawah-leading-one-kolom-1" title="Link to this heading">#</a></h2>
+<p>Terapkan <span class="math notranslate nohighlight">\(R_3 - 2R_1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\xrightarrow{R_3 - 2R_1}
+\begin{bmatrix}
+1 &amp; 2 &amp; -5 &amp; 3 &amp; 6 &amp; 14 \\
+0 &amp; 0 &amp; -2 &amp; 0 &amp; 7 &amp; 12 \\
+0 &amp; 0 &amp; 5 &amp; 0 &amp; -17 &amp; -29
+\end{bmatrix}
+\end{split}\]</div>
+<p><em>(selesai dengan baris pertama)</em></p>
+</section>
+<section id="langkah-4-7-lanjutkan-proses">
+<h2>Langkah 4-7: Lanjutkan proses…<a class="headerlink" href="#langkah-4-7-lanjutkan-proses" title="Link to this heading">#</a></h2>
+<p><em>(Ikuti langkah yang sama seperti versi Inggris)</em></p>
+</section>
+<section id="hasil-akhir-bentuk-eselon-baris">
+<h2>Hasil Akhir - Bentuk Eselon Baris:<a class="headerlink" href="#hasil-akhir-bentuk-eselon-baris" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+1 &amp; 2 &amp; -5 &amp; 3 &amp; 6 &amp; 14 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; -7/2 &amp; -6 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="id2">
+<h1>Poin Penting:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><strong>Posisi pivot</strong>: (1,1), (2,3), (3,5)</p></li>
+<li><p><strong>Leading ones</strong>: Setiap baris tak nol memiliki leading 1</p></li>
+<li><p><strong>Pola tangga</strong>: Setiap leading 1 berada di sebelah kanan leading 1 di baris atasnya</p></li>
+<li><p><strong>Baris nol</strong>: Semua baris nol (jika ada) berada di bagian bawah</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GaussianElimination</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kelas untuk melakukan eliminasi Gauss step-by-step&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">nama</span><span class="o">=</span><span class="s2">&quot;Matriks&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nama</span> <span class="o">=</span> <span class="n">nama</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_count</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">tampilkan_matriks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">judul</span><span class="o">=</span><span class="s2">&quot;Matriks&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Menampilkan matriks dengan format yang rapi&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">judul</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">):</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;  [&quot;</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+                    <span class="n">row</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">0</span><span class="si">:</span><span class="s2">7.2f</span><span class="si">}</span><span class="s2">  &quot;</span>
+                <span class="k">elif</span> <span class="nb">abs</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+                    <span class="n">row</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">:</span><span class="s2">7d</span><span class="si">}</span><span class="s2">  &quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">row</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">7.2f</span><span class="si">}</span><span class="s2">  &quot;</span>
+            <span class="n">row</span> <span class="o">+=</span> <span class="s2">&quot;]&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">swap_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Menukar baris r1 dan r2&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[Step </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">step_count</span><span class="si">}</span><span class="s2">] Swap: R</span><span class="si">{</span><span class="n">r1</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ↔ R</span><span class="si">{</span><span class="n">r2</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[[</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[[</span><span class="n">r2</span><span class="p">,</span> <span class="n">r1</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tampilkan_matriks</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setelah R</span><span class="si">{</span><span class="n">r1</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ↔ R</span><span class="si">{</span><span class="n">r2</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">scalar</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mengalikan baris dengan scalar&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[Step </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">step_count</span><span class="si">}</span><span class="s2">] Scale: R</span><span class="si">{</span><span class="n">row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> × (</span><span class="si">{</span><span class="n">scalar</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scalar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tampilkan_matriks</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setelah R</span><span class="si">{</span><span class="n">row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> × (</span><span class="si">{</span><span class="n">scalar</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_multiple</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_row</span><span class="p">,</span> <span class="n">source_row</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Menambahkan kelipatan baris source ke target&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[Step </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">step_count</span><span class="si">}</span><span class="s2">] Row op: R</span><span class="si">{</span><span class="n">target_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> + (</span><span class="si">{</span><span class="n">multiplier</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)×R</span><span class="si">{</span><span class="n">source_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">target_row</span><span class="p">]</span> <span class="o">+=</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">source_row</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tampilkan_matriks</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setelah R</span><span class="si">{</span><span class="n">target_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> + (</span><span class="si">{</span><span class="n">multiplier</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)×R</span><span class="si">{</span><span class="n">source_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_pivot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">start_row</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Menemukan pivot di kolom tertentu mulai dari start_row&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">col</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">i</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">eliminate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Melakukan eliminasi Gauss lengkap&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ELIMINASI GAUSS: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nama</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">tampilkan_matriks</span><span class="p">(</span><span class="s2">&quot;Matriks Awal&quot;</span><span class="p">)</span>
+        
+        <span class="n">pivot_row</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">pivot_row</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">:</span>
+                <span class="k">break</span>
+            
+            <span class="n">pivot_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_pivot</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">pivot_row</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">pivot_idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">continue</span>
+            
+            <span class="k">if</span> <span class="n">pivot_idx</span> <span class="o">!=</span> <span class="n">pivot_row</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">swap_rows</span><span class="p">(</span><span class="n">pivot_row</span><span class="p">,</span> <span class="n">pivot_idx</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Step 1: Swap baris untuk mendapat pivot&quot;</span><span class="p">)</span>
+            
+            <span class="n">pivot_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">pivot_row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pivot_val</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">scale_row</span><span class="p">(</span><span class="n">pivot_row</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">pivot_val</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Step 2: Scale untuk membuat leading 1&quot;</span><span class="p">)</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Step 3: Eliminasi baris di bawah pivot&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pivot_row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">):</span>
+                <span class="n">factor</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">add_multiple</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">pivot_row</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;     R</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> + (</span><span class="si">{</span><span class="n">factor</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)×R</span><span class="si">{</span><span class="n">pivot_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">tampilkan_matriks</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setelah kolom </span><span class="si">{</span><span class="n">col</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> selesai (done with row </span><span class="si">{</span><span class="n">pivot_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            
+            <span class="n">pivot_row</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  → Step 4: Lanjut ke baris </span><span class="si">{</span><span class="n">pivot_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HASIL AKHIR - BENTUK ECHELON BARIS&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tampilkan_matriks</span><span class="p">(</span><span class="s2">&quot;Matriks Eselon Baris&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model_example</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contoh Model dari Definisi 1.2.8&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">28</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">]</span>
+    
+    <span class="n">elim</span> <span class="o">=</span> <span class="n">GaussianElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="s2">&quot;Contoh Model - Definisi 1.2.8&quot;</span><span class="p">)</span>
+    <span class="n">elim</span><span class="o">.</span><span class="n">eliminate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">elim</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">contoh_sederhana_1</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contoh 1: Sistem 3x3&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="p">]</span>
+    
+    <span class="n">elim</span> <span class="o">=</span> <span class="n">GaussianElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="s2">&quot;Sistem 3x3 Sederhana&quot;</span><span class="p">)</span>
+    <span class="n">elim</span><span class="o">.</span><span class="n">eliminate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">elim</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">contoh_sederhana_2</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contoh 2: Sistem 2x2&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">]</span>
+    
+    <span class="n">elim</span> <span class="o">=</span> <span class="n">GaussianElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="s2">&quot;Sistem 2x2&quot;</span><span class="p">)</span>
+    <span class="n">elim</span><span class="o">.</span><span class="n">eliminate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">elim</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">contoh_sederhana_3</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contoh 3: Sistem 3x4&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="p">]</span>
+    
+    <span class="n">elim</span> <span class="o">=</span> <span class="n">GaussianElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="s2">&quot;Sistem 3x4&quot;</span><span class="p">)</span>
+    <span class="n">elim</span><span class="o">.</span><span class="n">eliminate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">elim</span>
+
+
+<span class="c1"># Program utama - Langsung jalankan semua contoh</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PROGRAM ELIMINASI GAUSS&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Definition 1.2.8 - Step by Step&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    
+    <span class="c1"># Jalankan semua contoh secara berurutan</span>
+    <span class="n">model_example</span><span class="p">()</span>
+    <span class="n">contoh_sederhana_1</span><span class="p">()</span>
+    <span class="n">contoh_sederhana_2</span><span class="p">()</span>
+    <span class="n">contoh_sederhana_3</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Semua contoh selesai!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
+PROGRAM ELIMINASI GAUSS
+Definition 1.2.8 - Step by Step
+======================================================================
+
+======================================================================
+ELIMINASI GAUSS: Contoh Model - Definisi 1.2.8
+======================================================================
+
+Matriks Awal:
+----------------------------------------------------------------------
+  [   0.00     0.00       -2     0.00        7       12  ]
+  [      2        4      -10        6       12       28  ]
+  [      2        4       -5        6       -5       -1  ]
+----------------------------------------------------------------------
+
+[Step 1] Swap: R1 ↔ R2
+
+Setelah R1 ↔ R2:
+----------------------------------------------------------------------
+  [      2        4      -10        6       12       28  ]
+  [   0.00     0.00       -2     0.00        7       12  ]
+  [      2        4       -5        6       -5       -1  ]
+----------------------------------------------------------------------
+  → Step 1: Swap baris untuk mendapat pivot
+
+[Step 2] Scale: R1 × (0.5000)
+
+Setelah R1 × (0.5000):
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00       -2     0.00        7       12  ]
+  [      2        4       -5        6       -5       -1  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+[Step 3] Row op: R3 + (-2.0000)×R1
+
+Setelah R3 + (-2.0000)×R1:
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00       -2     0.00        7       12  ]
+  [   0.00     0.00        5     0.00      -17      -29  ]
+----------------------------------------------------------------------
+     R3 + (-2.0000)×R1
+
+Setelah kolom 1 selesai (done with row 1):
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00       -2     0.00        7       12  ]
+  [   0.00     0.00        5     0.00      -17      -29  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 2
+----------------------------------------------------------------------
+
+[Step 4] Scale: R2 × (-0.5000)
+
+Setelah R2 × (-0.5000):
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00        1     0.00    -3.50       -6  ]
+  [   0.00     0.00        5     0.00      -17      -29  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+[Step 5] Row op: R3 + (-5.0000)×R2
+
+Setelah R3 + (-5.0000)×R2:
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00        1     0.00    -3.50       -6  ]
+  [   0.00     0.00     0.00     0.00     0.50        1  ]
+----------------------------------------------------------------------
+     R3 + (-5.0000)×R2
+
+Setelah kolom 3 selesai (done with row 2):
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00        1     0.00    -3.50       -6  ]
+  [   0.00     0.00     0.00     0.00     0.50        1  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 3
+----------------------------------------------------------------------
+
+[Step 6] Scale: R3 × (2.0000)
+
+Setelah R3 × (2.0000):
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00        1     0.00    -3.50       -6  ]
+  [   0.00     0.00     0.00     0.00        1        2  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+Setelah kolom 5 selesai (done with row 3):
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00        1     0.00    -3.50       -6  ]
+  [   0.00     0.00     0.00     0.00        1        2  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 4
+----------------------------------------------------------------------
+
+======================================================================
+HASIL AKHIR - BENTUK ECHELON BARIS
+======================================================================
+
+Matriks Eselon Baris:
+----------------------------------------------------------------------
+  [      1        2       -5        3        6       14  ]
+  [   0.00     0.00        1     0.00    -3.50       -6  ]
+  [   0.00     0.00     0.00     0.00        1        2  ]
+----------------------------------------------------------------------
+
+======================================================================
+ELIMINASI GAUSS: Sistem 3x3 Sederhana
+======================================================================
+
+Matriks Awal:
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [      2       -1        1        3  ]
+  [      1        2       -1        2  ]
+----------------------------------------------------------------------
+  → Step 3: Eliminasi baris di bawah pivot
+
+[Step 1] Row op: R2 + (-2.0000)×R1
+
+Setelah R2 + (-2.0000)×R1:
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00       -3       -1       -9  ]
+  [      1        2       -1        2  ]
+----------------------------------------------------------------------
+     R2 + (-2.0000)×R1
+
+[Step 2] Row op: R3 + (-1.0000)×R1
+
+Setelah R3 + (-1.0000)×R1:
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00       -3       -1       -9  ]
+  [   0.00        1       -2       -4  ]
+----------------------------------------------------------------------
+     R3 + (-1.0000)×R1
+
+Setelah kolom 1 selesai (done with row 1):
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00       -3       -1       -9  ]
+  [   0.00        1       -2       -4  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 2
+----------------------------------------------------------------------
+
+[Step 3] Scale: R2 × (-0.3333)
+
+Setelah R2 × (-0.3333):
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00        1     0.33        3  ]
+  [   0.00        1       -2       -4  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+[Step 4] Row op: R3 + (-1.0000)×R2
+
+Setelah R3 + (-1.0000)×R2:
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00        1     0.33        3  ]
+  [   0.00     0.00    -2.33       -7  ]
+----------------------------------------------------------------------
+     R3 + (-1.0000)×R2
+
+Setelah kolom 2 selesai (done with row 2):
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00        1     0.33        3  ]
+  [   0.00     0.00    -2.33       -7  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 3
+----------------------------------------------------------------------
+
+[Step 5] Scale: R3 × (-0.4286)
+
+Setelah R3 × (-0.4286):
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00        1     0.33        3  ]
+  [   0.00     0.00        1        3  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+Setelah kolom 3 selesai (done with row 3):
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00        1     0.33        3  ]
+  [   0.00     0.00        1        3  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 4
+----------------------------------------------------------------------
+
+======================================================================
+HASIL AKHIR - BENTUK ECHELON BARIS
+======================================================================
+
+Matriks Eselon Baris:
+----------------------------------------------------------------------
+  [      1        1        1        6  ]
+  [   0.00        1     0.33        3  ]
+  [   0.00     0.00        1        3  ]
+----------------------------------------------------------------------
+
+======================================================================
+ELIMINASI GAUSS: Sistem 2x2
+======================================================================
+
+Matriks Awal:
+----------------------------------------------------------------------
+  [      2        1        5  ]
+  [      1       -1        1  ]
+----------------------------------------------------------------------
+
+[Step 1] Scale: R1 × (0.5000)
+
+Setelah R1 × (0.5000):
+----------------------------------------------------------------------
+  [      1     0.50     2.50  ]
+  [      1       -1        1  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+[Step 2] Row op: R2 + (-1.0000)×R1
+
+Setelah R2 + (-1.0000)×R1:
+----------------------------------------------------------------------
+  [      1     0.50     2.50  ]
+  [   0.00    -1.50    -1.50  ]
+----------------------------------------------------------------------
+     R2 + (-1.0000)×R1
+
+Setelah kolom 1 selesai (done with row 1):
+----------------------------------------------------------------------
+  [      1     0.50     2.50  ]
+  [   0.00    -1.50    -1.50  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 2
+----------------------------------------------------------------------
+
+[Step 3] Scale: R2 × (-0.6667)
+
+Setelah R2 × (-0.6667):
+----------------------------------------------------------------------
+  [      1     0.50     2.50  ]
+  [   0.00        1        1  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+Setelah kolom 2 selesai (done with row 2):
+----------------------------------------------------------------------
+  [      1     0.50     2.50  ]
+  [   0.00        1        1  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 3
+----------------------------------------------------------------------
+
+======================================================================
+HASIL AKHIR - BENTUK ECHELON BARIS
+======================================================================
+
+Matriks Eselon Baris:
+----------------------------------------------------------------------
+  [      1     0.50     2.50  ]
+  [   0.00        1        1  ]
+----------------------------------------------------------------------
+
+======================================================================
+ELIMINASI GAUSS: Sistem 3x4
+======================================================================
+
+Matriks Awal:
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [      2        4        1        1        7  ]
+  [      3        6        2       -2        5  ]
+----------------------------------------------------------------------
+  → Step 3: Eliminasi baris di bawah pivot
+
+[Step 1] Row op: R2 + (-2.0000)×R1
+
+Setelah R2 + (-2.0000)×R1:
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        3       -5       -9  ]
+  [      3        6        2       -2        5  ]
+----------------------------------------------------------------------
+     R2 + (-2.0000)×R1
+
+[Step 2] Row op: R3 + (-3.0000)×R1
+
+Setelah R3 + (-3.0000)×R1:
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        3       -5       -9  ]
+  [   0.00     0.00        5      -11      -19  ]
+----------------------------------------------------------------------
+     R3 + (-3.0000)×R1
+
+Setelah kolom 1 selesai (done with row 1):
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        3       -5       -9  ]
+  [   0.00     0.00        5      -11      -19  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 2
+----------------------------------------------------------------------
+
+[Step 3] Scale: R2 × (0.3333)
+
+Setelah R2 × (0.3333):
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        1    -1.67       -3  ]
+  [   0.00     0.00        5      -11      -19  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+[Step 4] Row op: R3 + (-5.0000)×R2
+
+Setelah R3 + (-5.0000)×R2:
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        1    -1.67       -3  ]
+  [   0.00     0.00     0.00    -2.67       -4  ]
+----------------------------------------------------------------------
+     R3 + (-5.0000)×R2
+
+Setelah kolom 3 selesai (done with row 2):
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        1    -1.67       -3  ]
+  [   0.00     0.00     0.00    -2.67       -4  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 3
+----------------------------------------------------------------------
+
+[Step 5] Scale: R3 × (-0.3750)
+
+Setelah R3 × (-0.3750):
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        1    -1.67       -3  ]
+  [   0.00     0.00     0.00        1     1.50  ]
+----------------------------------------------------------------------
+  → Step 2: Scale untuk membuat leading 1
+  → Step 3: Eliminasi baris di bawah pivot
+
+Setelah kolom 4 selesai (done with row 3):
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        1    -1.67       -3  ]
+  [   0.00     0.00     0.00        1     1.50  ]
+----------------------------------------------------------------------
+  → Step 4: Lanjut ke baris 4
+----------------------------------------------------------------------
+
+======================================================================
+HASIL AKHIR - BENTUK ECHELON BARIS
+======================================================================
+
+Matriks Eselon Baris:
+----------------------------------------------------------------------
+  [      1        2       -1        3        8  ]
+  [   0.00     0.00        1    -1.67       -3  ]
+  [   0.00     0.00     0.00        1     1.50  ]
+----------------------------------------------------------------------
+
+======================================================================
+Semua contoh selesai!
+======================================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-sistem-3-variabel">
+<h1>A. Sistem 3 Variabel<a class="headerlink" href="#a-sistem-3-variabel" title="Link to this heading">#</a></h1>
+<section id="sistem-persamaan">
+<h2>Sistem Persamaan<a class="headerlink" href="#sistem-persamaan" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+x + y + z = 6 \\
+2x + 3y + z = 11 \\
+x + 2y + 3z = 14
+\end{cases}
+\end{split}\]</div>
+<p><strong>Solusi:</strong></p>
+<div class="math notranslate nohighlight">
+\[ x = 1, \quad y = 2, \quad z = 3 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;EGV3.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bb4a3fc9b0dccffb8424591c67d4801a0116414f9a46ec7e433356eb2d6230dc.png" src="_images/bb4a3fc9b0dccffb8424591c67d4801a0116414f9a46ec7e433356eb2d6230dc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ELIMINASI GAUSSIAN - 3 VARIABEL&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================&quot;</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriks Awal:&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># R2 → R2 - 2R1</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 → R2 - 2R1 (Baris 2 dikurangi 2 kali Baris 1)&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># R3 → R3 - R1</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R3 → R3 - R1 (Baris 3 dikurangi Baris 1)&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># R3 → R3 - R2</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R3 → R3 - R2 (Baris 3 dikurangi Baris 2)&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># R3 → (1/3)R3</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R3 → (1/3)R3 (Baris 3 dibagi 3)&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># R2 → R2 + R3</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 → R2 + R3 (Baris 2 ditambah Baris 3)&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># R1 → R1 - R3</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R1 → R1 - R3 (Baris 1 dikurangi Baris 3)&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># R1 → R1 - R2</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R1 → R1 - R2 (Baris 1 dikurangi Baris 2)&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HASIL AKHIR:&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ELIMINASI GAUSSIAN - 3 VARIABEL
+=================================
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ELIMINASI GAUSSIAN - 3 VARIABEL&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriks Awal:&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">show</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;matrix&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="langkah-1-eliminasi-kolom-pertama-baris-2">
+<h3>LANGKAH 1: Eliminasi kolom pertama (baris 2)<a class="headerlink" href="#langkah-1-eliminasi-kolom-pertama-baris-2" title="Link to this heading">#</a></h3>
+<p><strong>Operasi 1: R2 = R2 - 2×R1</strong></p>
+<p>R2: (2 3 1 | 11) - 2×(1 1 1 | 6)</p>
+<p>= (2-2, 3-2, 1-2 | 11-12)</p>
+<p>= (0 1 -1 | -1)</p>
+</section>
+<section id="langkah-2-eliminasi-kolom-pertama-baris-3">
+<h3>LANGKAH 2: Eliminasi kolom pertama (baris 3)<a class="headerlink" href="#langkah-2-eliminasi-kolom-pertama-baris-3" title="Link to this heading">#</a></h3>
+<p><strong>Operasi: R3 = R3 - R1</strong></p>
+<p>R3: (1 2 3 | 14) - (1 1 1 | 6)</p>
+<p>= (1-1, 2-1, 3-1 | 14-6)</p>
+<p>= (0 1 2 | 8)</p>
+</section>
+<section id="langkah-3-eliminasi-kolom-kedua-baris-3">
+<h3>LANGKAH 3: Eliminasi kolom kedua (baris 3)<a class="headerlink" href="#langkah-3-eliminasi-kolom-kedua-baris-3" title="Link to this heading">#</a></h3>
+<p><strong>Operasi: R3 = R3 - R2</strong></p>
+<p>R3: (0 1 2 | 8) - (0 1 -1 | -1)</p>
+<p>= (0, 1-1, 2-(-1) | 8-(-1))</p>
+<p>= (0 0 3 | 9)</p>
+</section>
+<section id="langkah-4-rescaling-baris-3">
+<h3>LANGKAH 4: Rescaling baris 3<a class="headerlink" href="#langkah-4-rescaling-baris-3" title="Link to this heading">#</a></h3>
+<p><strong>Operasi: R3 = R3 ÷ 3</strong></p>
+<p>R3: (0 0 3 | 9) ÷ 3</p>
+<p>= (0 0 1 | 3)</p>
+</section>
+<section id="langkah-5-substitusi-mundur-eliminasi-kolom-ketiga">
+<h3>LANGKAH 5: Substitusi Mundur - Eliminasi kolom ketiga<a class="headerlink" href="#langkah-5-substitusi-mundur-eliminasi-kolom-ketiga" title="Link to this heading">#</a></h3>
+<p><strong>Operasi 1: R2 = R2 + R3</strong></p>
+<p>R2: (0 1 -1 | -1) + (0 0 1 | 3)</p>
+<p>= (0 1 0 | 2)</p>
+<p>Operasi 2: R1 = R1 - R3</p>
+<p>R1: (1 1 1 | 6) - (0 0 1 | 3)</p>
+<p>= (1 1 0 | 3)</p>
+</section>
+<section id="langkah-6-substitusi-mundur-eliminasi-kolom-kedua">
+<h3>LANGKAH 6: Substitusi Mundur - Eliminasi kolom kedua<a class="headerlink" href="#langkah-6-substitusi-mundur-eliminasi-kolom-kedua" title="Link to this heading">#</a></h3>
+<p><strong>Operasi: R1 = R1 - R2</strong></p>
+<p>R1: (1 1 0 | 3) - (0 1 0 | 2)</p>
+<p>= (1 0 0 | 1)</p>
+<p><strong>SOLUSI:</strong></p>
+<p>x = 1, y = 2, z = 3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;EGV4c1.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f734d981d7942563e250d2e44ac27ef377dc028c6db27ad909286cf77817c3ca.png" src="_images/f734d981d7942563e250d2e44ac27ef377dc028c6db27ad909286cf77817c3ca.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;EGV4c2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d43434b039d726c40c1ce4dacd21b83ad0cd533afdf081188fc46e0bd2e1cb0e.png" src="_images/d43434b039d726c40c1ce4dacd21b83ad0cd533afdf081188fc46e0bd2e1cb0e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;EGV4c3.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bc5c637759079501a57dd58ebb7503ad6c9738f98b1b8ab0cf704321f8df7820.png" src="_images/bc5c637759079501a57dd58ebb7503ad6c9738f98b1b8ab0cf704321f8df7820.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;EGV4c4.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0d5e1b2f99f16e198ec404ffc8746eae2ab818e202ad2c31157612b1660358fb.png" src="_images/0d5e1b2f99f16e198ec404ffc8746eae2ab818e202ad2c31157612b1660358fb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriks Awal&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 → R2 - 2R1&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R3 → R3 - R1&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R4 → R4 - R1&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 → -R2&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R3 → R3 - R2&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R3 → -R3&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R4 → R4 - R3&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R4 → -R4&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R3 → R3 - R4&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 → R2 - R4&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R1 → R1 - R4&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 → R2 - R3&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R1 → R1 - R3&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R1 → R1 - R2&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2>Matriks Awal<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+2 &amp; 1 &amp; 1 &amp; 1 &amp; 11 \\
+1 &amp; 2 &amp; 1 &amp; 1 &amp; 12 \\
+1 &amp; 1 &amp; 2 &amp; 1 &amp; 13
+\end{pmatrix}
+\end{split}\]</div>
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R2 \to R2 - 2R1\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; -1 &amp; -1 &amp; -1 &amp; -9 \\
+1 &amp; 2 &amp; 1 &amp; 1 &amp; 12 \\
+1 &amp; 1 &amp; 2 &amp; 1 &amp; 13
+\end{pmatrix}
+\)</span>$</p>
+<p>(Langkah selanjutnya terlihat di gambar: <span class="math notranslate nohighlight">\(R3 \to R3 - R1\)</span> dan <span class="math notranslate nohighlight">\(R4 \to R4 - R1\)</span>)
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; -1 &amp; -1 &amp; -1 &amp; -9 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3
+\end{pmatrix}
+\)</span>$</p>
+<hr class="docutils" />
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R3 \to R3 - R1\)</span>, <span class="math notranslate nohighlight">\(R4 \to R4 - R1\)</span> (Lanjutan normalisasi kolom 1)
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 9 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3
+\end{pmatrix}
+\)</span>$
+<em>(Catatan: Pada gambar, baris 2似乎 sudah dikalikan -1 menjadi positif)</em></p>
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R2 \to -R2\)</span>, <span class="math notranslate nohighlight">\(R3 \to R3 - R2\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 9 \\
+0 &amp; 0 &amp; -1 &amp; -1 &amp; -7 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3
+\end{pmatrix}
+\)</span>$</p>
+<p>(Langkah implisit: <span class="math notranslate nohighlight">\(R3 \to -R3\)</span>)
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 9 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 7 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3
+\end{pmatrix}
+\)</span>$</p>
+<p>(Langkah implisit: <span class="math notranslate nohighlight">\(R4 \to R4 - R3\)</span>)
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 9 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 7 \\
+0 &amp; 0 &amp; 0 &amp; -1 &amp; -4
+\end{pmatrix}
+\)</span>$</p>
+<hr class="docutils" />
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R3 \to -R3\)</span>, <span class="math notranslate nohighlight">\(R4 \to R4 - R3\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 9 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 7 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\)</span>$</p>
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R4 \to -R4\)</span> (Sebenarnya langkah ini membuat R4 positif, dan langkah selanjutnya merapikan R3)
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 10 \\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 9 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\)</span>$</p>
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R3 \to R3 - R4\)</span> (dan operasi baris lainnya untuk membersihkan kolom 4)
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 6 \\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 5 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\)</span>$</p>
+<hr class="docutils" />
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R1 \to R1 - R4\)</span>, <span class="math notranslate nohighlight">\(R2 \to R2 - R3\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 6 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\)</span>$</p>
+<p><strong>Operasi:</strong> <span class="math notranslate nohighlight">\(R1 \to R1 - R3\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 3 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\)</span>$</p>
+<p>(Langkah implisit menuju matriks identitas)
+$<span class="math notranslate nohighlight">\(
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 4
+\end{pmatrix}
+\)</span>$</p>
+<p><strong>Operasi Terakhir:</strong> <span class="math notranslate nohighlight">\(R1 \to R1 - R2\)</span></p>
+<p><strong>Solusi:</strong>
+w = 1, x = 2, y = 3, z = 4</p>
+</section>
+<section id="id4">
+<h2>Matriks Awal<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; |x1| = &amp; |10\\
+2 &amp; -1 &amp; 1 &amp; -1 &amp; |x2| = &amp; |-1\\
+1 &amp; 2 &amp; -1 &amp; 1 &amp; |x3| = &amp; | 6\\
+3 &amp; -1 &amp; 2 &amp; 1 &amp; |x4| = &amp; |11
+\end{pmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📚 BAGIAN 1: MENCARI INVERS MATRIKS A  ([A | I])&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">])</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">identity_matrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔹 Matriks Awal [A | I]&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="c1"># === ELIMINASI MAJU ===</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># R2 - 2R1</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># R3 - R1</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># R4 - 3R1</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_swapped_rows</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>              <span class="c1"># Tukar R2 ↔ R3</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># R3 + 3R2</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>   <span class="c1"># R4 + 4R2</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>          <span class="c1"># R3 / (-7)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>   <span class="c1"># R4 + 9R3</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">13</span><span class="p">)</span>          <span class="c1"># R4 * (7/13)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔹 Setelah Eliminasi Maju&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="c1"># === ELIMINASI MUNDUR ===</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># R3 - (3/7)R4</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>    <span class="c1"># R2 + 2R3</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># R1 - R4</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># R1 - R3</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># R1 - R2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Matriks Akhir [I | A⁻¹]&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">A_inv</span> <span class="o">=</span> <span class="n">C</span><span class="p">[:,</span><span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📦 Invers Matriks A (A⁻¹):&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">A_inv</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📚 BAGIAN 2: MENYELESAIKAN SISTEM AX = B  ([A | B])&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">B_vec</span> <span class="o">=</span> <span class="n">vector</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">])</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">B_vec</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔹 Matriks Awal [A | B]&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+<span class="c1"># Gunakan operasi baris KIRI yang SAMA PERSIS seperti di atas</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_swapped_rows</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_rescaled_row</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">with_added_multiple_of_row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Matriks Akhir [I | X]&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+<span class="n">solusi</span> <span class="o">=</span> <span class="n">D</span><span class="p">[:,</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📦 Solusi (x1, x2, x3, x4):&quot;</span><span class="p">,</span> <span class="n">solusi</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔍 VERIFIKASI HASIL&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Cek A × A⁻¹ = I ?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Hasil:&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">*</span> <span class="n">A_inv</span> <span class="o">==</span> <span class="n">I</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2. Cek A × X = B ?&quot;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">solusi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Hasil:&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">*</span> <span class="n">X</span> <span class="o">==</span> <span class="n">B_vec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;D2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/73850828defe3ccbc86dc61cda60f842949d827061c28a0de6c4cd0ca8766a3a.png" src="_images/73850828defe3ccbc86dc61cda60f842949d827061c28a0de6c4cd0ca8766a3a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;D1.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12e02d49fefcebb6084abad4e54a9fc82c2a70a1c01eebbb2dd7c6e90982c050.png" src="_images/12e02d49fefcebb6084abad4e54a9fc82c2a70a1c01eebbb2dd7c6e90982c050.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="markdown.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Markdown Files</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="markdown-notebooks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>1. Systems of linear equations</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-persamaan-linear"><strong>1.2Sistem Persamaan Linear</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-persamaan-linear">Definisi (Persamaan Linear)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-sistem-persamaan-linear"><strong>1.3Definisi Sistem persamaan linear</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi-sistem-persamaan-linear"><strong>1.4Solusi sistem persamaan linear</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi-persamaan-linear">Solusi persamaan linear</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solusi sistem persamaan linear</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-himpunan-solusi">Jenis-Jenis Himpunan Solusi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-1-5-solusi-sistem-elementer"><strong>Contoh 1.5 Solusi sistem elementer</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-1">Sistem 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-2">Sistem 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-3">Sistem 3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solusi">Solusi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-1-tidak-ada-solusi-inkonsisten">Sistem 1: <strong>Tidak Ada Solusi (Inkonsisten)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-2-solusi-unik">Sistem 2: <strong>Solusi Unik</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-3-tak-hingga-banyak-solusi">Sistem 3: <strong>Tak Hingga Banyak Solusi</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-geometris">Interpretasi Geometris</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-yang-menngunakan-3-variabel-dengan-kondisi-unik"><strong>Contoh Yang menngunakan 3 variabel dengan kondisi unik</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminasi-gauss-gaussian-elimination"><strong>2.1 Eliminasi Gauss (Gaussian Elimination)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-eselon-baris"><strong>2.2 Matriks eselon baris</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-2-2-1-matriks-teraugmentasi">Definisi 2.2.1. Matriks teraugmentasi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poin-penting">Poin Penting:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-2-3-eliminasi-gauss"><strong>Definisi 2.3 Eliminasi Gauss</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-algoritma">Langkah-langkah Algoritma:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-model">Contoh Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-awal">Matriks Awal:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-tukar-r-1-leftrightarrow-r-2">Langkah 1: Tukar <span class="math notranslate nohighlight">\(R_1 \leftrightarrow R_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-skala-r-1-dengan-frac-1-2">Langkah 2: Skala <span class="math notranslate nohighlight">\(R_1\)</span> dengan <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-eliminasi-di-bawah-leading-one-kolom-1">Langkah 3: Eliminasi di bawah leading one kolom 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-7-lanjutkan-proses">Langkah 4-7: Lanjutkan proses…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-bentuk-eselon-baris">Hasil Akhir - Bentuk Eselon Baris:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Poin Penting:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sistem-3-variabel">A. Sistem 3 Variabel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-persamaan">Sistem Persamaan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-eliminasi-kolom-pertama-baris-2">LANGKAH 1: Eliminasi kolom pertama (baris 2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eliminasi-kolom-pertama-baris-3">LANGKAH 2: Eliminasi kolom pertama (baris 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-eliminasi-kolom-kedua-baris-3">LANGKAH 3: Eliminasi kolom kedua (baris 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-rescaling-baris-3">LANGKAH 4: Rescaling baris 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-substitusi-mundur-eliminasi-kolom-ketiga">LANGKAH 5: Substitusi Mundur - Eliminasi kolom ketiga</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-substitusi-mundur-eliminasi-kolom-kedua">LANGKAH 6: Substitusi Mundur - Eliminasi kolom kedua</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Matriks Awal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Matriks Awal</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
